@@ -57,16 +57,6 @@ jobs:
       - name: Install Playwright OS dependencies
         run: npx --yes playwright install-deps
 
-      # Step 6: Set up Node.js (needed to install Playwright's OS-level browser dependencies)
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      # Step 7: Install Playwright's OS-level dependencies (e.g. GTK/media libs the bundled browsers need)
-      - name: Install Playwright OS dependencies
-        run: npx --yes playwright install-deps
-
       # Step 4: Run Maven to execute Playwright tests
       - name: Run Playwright Tests
         run: mvn verify
