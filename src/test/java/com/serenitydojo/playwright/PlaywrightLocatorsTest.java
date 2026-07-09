@@ -111,6 +111,7 @@ public class PlaywrightLocatorsTest {
         @DisplayName("Finding visible and invisible elements")
         @Test
         void locateVisibleAndInvisibleItems(Page page) {
+            page.waitForCondition(() -> page.locator(".dropdown-item").count() > 0);
             int dropdownItems = page.locator(".dropdown-item").count();
             Assertions.assertTrue(dropdownItems > 0);
         }
