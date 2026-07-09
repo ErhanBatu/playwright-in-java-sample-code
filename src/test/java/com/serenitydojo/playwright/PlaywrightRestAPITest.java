@@ -65,7 +65,7 @@ public class PlaywrightRestAPITest {
         @Test
         @DisplayName("When a search returns a single product")
         void whenASingleItemIsFound() {
-            page.route("**/products/search?q=pliers",
+            page.route("**/products/search",
                     route -> route.fulfill(new Route.FulfillOptions()
                             .setBody(MockSearchResponses.RESPONSE_WITH_A_SINGLE_ENTRY)
                             .setStatus(200))
@@ -84,7 +84,7 @@ public class PlaywrightRestAPITest {
         @Test
         @DisplayName("When a search returns no products")
         void whenNoItemsAreFound() {
-            page.route("**/products/search?q=pliers",
+            page.route("**/products/search",
                     route -> route.fulfill(new Route.FulfillOptions()
                             .setBody(MockSearchResponses.RESPONSE_WITH_NO_ENTRIES)
                             .setStatus(200))
