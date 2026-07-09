@@ -164,8 +164,12 @@ public class PlaywrightWaitsTest {
             page.navigate("https://practicesoftwaretesting.com");
 
             // Sort by descending price
-            // (Note: The API endpoint has evolved and is slightly different to the one in the video)
-            page.waitForResponse("**/products?page=0&sort**",
+            // (Note: The API endpoint has evolved and is slightly different to the one in the video;
+            // it now sends the sort/page criteria in the request body rather than as URL query params)
+            page.waitForResponse(
+                    response -> response.url().contains("/products")
+                            && response.request().postData() != null
+                            && response.request().postData().contains("\"sort\":\"price,desc\""),
                     () -> {
                         page.getByTestId("sort").selectOption("Price (High - Low)");
                     });
