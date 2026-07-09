@@ -13,9 +13,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.21</aspectj.version>
-        <serenity-bom.version>5.3.7</serenity-bom.version>
-        <cucumber-bom.version>7.34.2</cucumber-bom.version>
-        <junit-bom.version>6.0.3</junit-bom.version>
+        <serenity-bom.version>5.3.10</serenity-bom.version>
+        <cucumber-bom.version>7.34.4</cucumber-bom.version>
+        <junit-bom.version>6.1.1</junit-bom.version>
     </properties>
 
     <dependencyManagement>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
-            <version>1.57.0</version>
+            <version>1.61.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.27.6</version>
+            <version>3.27.7</version>
         </dependency>
         <dependency>
             <groupId>com.deque.html.axe-core</groupId>
@@ -121,7 +121,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.5.6</version>
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
@@ -129,7 +129,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.5.6</version>
                 <executions>
                     <execution>
                         <goals>
