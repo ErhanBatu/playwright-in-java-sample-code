@@ -7,6 +7,7 @@ import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.options.LoadState;
 import com.microsoft.playwright.options.SelectOption;
+import com.microsoft.playwright.options.WaitForSelectorState;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -111,6 +112,10 @@ public class PlaywrightLocatorsTest {
         @DisplayName("Finding visible and invisible elements")
         @Test
         void locateVisibleAndInvisibleItems(Page page) {
+            // The nav dropdown items are rendered asynchronously by the Angular app,
+            // so wait for the first one to be attached to the DOM before counting.
+            // They stay hidden until the dropdown is opened, so wait for ATTACHED rather than the default VISIBLE state.
+            page.locator(".dropdown-item").first().waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.ATTACHED));
             int dropdownItems = page.locator(".dropdown-item").count();
             Assertions.assertTrue(dropdownItems > 0);
         }
