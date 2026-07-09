@@ -113,10 +113,10 @@ public class PlaywrightWaitsTest {
         @Test
         @DisplayName("Should filter products by category and wait for the API response to return")
         void shouldFilterProductsByCategoryAfterTheAPIResponseReturns() {
-            page.getByPlaceholder("Search").fill("saw");
-            page.getByPlaceholder("Search").press("Enter");
-
-            page.waitForResponse("**/products/search?q=saw", () -> {});
+            page.waitForResponse("**/products/search?q=saw", () -> {
+                page.getByPlaceholder("Search").fill("saw");
+                page.getByPlaceholder("Search").press("Enter");
+            });
 
             var filteredProducts = page.getByTestId("product-name").allInnerTexts();
 
