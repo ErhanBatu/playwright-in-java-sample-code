@@ -35,6 +35,7 @@ public class AddToCartTest extends PlaywrightTestCase {
         checkoutCart = new CheckoutCart(page);
     }
 
+
     @Test
     @Story("Check out")
     @DisplayName("Checking out a single item")
