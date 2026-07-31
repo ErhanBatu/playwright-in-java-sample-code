@@ -41,6 +41,12 @@
             <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>2.7.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
