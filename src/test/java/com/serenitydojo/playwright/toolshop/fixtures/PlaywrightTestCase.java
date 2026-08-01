@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public abstract class PlaywrightTestCase {
 
+    //this is for parallel execution
     protected static ThreadLocal<Playwright> playwright
             = ThreadLocal.withInitial(() -> {
                 Playwright playwright = Playwright.create();

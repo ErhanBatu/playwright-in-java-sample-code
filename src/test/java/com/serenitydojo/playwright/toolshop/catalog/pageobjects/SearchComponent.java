@@ -11,7 +11,13 @@ public class SearchComponent {
     }
 
     public void searchBy(String keyword) {
-        page.waitForResponse("**/products/search?**", () -> {
+        page.waitForResponse(response ->
+                response.url().endsWith("/products/search")
+                        && "QUERY".equalsIgnoreCase(
+                        response.request().method()
+                )
+                        && response.status() == 200,
+                () -> {
             page.getByPlaceholder("Search").fill(keyword);
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Search")).click();
         });
