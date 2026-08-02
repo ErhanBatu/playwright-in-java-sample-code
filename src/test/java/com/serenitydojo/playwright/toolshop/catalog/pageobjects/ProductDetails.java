@@ -2,7 +2,9 @@ package com.serenitydojo.playwright.toolshop.catalog.pageobjects;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.serenitydojo.playwright.toolshop.fixtures.PlaywrightTestCase;
 import io.qameta.allure.Step;
+
 
 public class ProductDetails {
     private final Page page;
@@ -27,5 +29,6 @@ public class ProductDetails {
                     page.getByRole(AriaRole.ALERT).click();
                 }
         );
+
     }
 }
