@@ -2,6 +2,7 @@ package com.serenitydojo.playwright.toolshop.catalog.pageobjects;
 
 import com.microsoft.playwright.Page;
 import com.serenitydojo.playwright.toolshop.fixtures.ProductSummary;
+import com.serenitydojo.playwright.toolshop.fixtures.ScreenshotManager;
 import io.qameta.allure.Step;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ProductList {
     @Step("View product details")
     public void viewProductDetails(String productName) {
         page.locator(".card").getByText(productName).click();
+        ScreenshotManager.takeScreenshot(page,"view product details");
     }
 
     public String getSearchCompletedMessage() {

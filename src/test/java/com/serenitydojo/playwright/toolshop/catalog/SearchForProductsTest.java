@@ -3,6 +3,7 @@ package com.serenitydojo.playwright.toolshop.catalog;
 import com.serenitydojo.playwright.toolshop.catalog.pageobjects.ProductList;
 import com.serenitydojo.playwright.toolshop.catalog.pageobjects.SearchComponent;
 import com.serenitydojo.playwright.toolshop.fixtures.PlaywrightTestCase;
+import com.serenitydojo.playwright.toolshop.fixtures.ScreenshotManager;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.assertj.core.api.Assertions;
@@ -31,7 +32,9 @@ public class SearchForProductsTest extends PlaywrightTestCase {
             SearchComponent searchComponent = new SearchComponent(page);
             ProductList productList = new ProductList(page);
 
+            ScreenshotManager.takeScreenshot(page, "ss1");
             searchComponent.searchBy("tape");
+            ScreenshotManager.takeScreenshot(page, "ss2");
 
             var matchingProducts = productList.getProductNames();
 
