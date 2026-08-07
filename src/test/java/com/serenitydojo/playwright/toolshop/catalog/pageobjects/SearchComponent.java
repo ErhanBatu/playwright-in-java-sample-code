@@ -30,13 +30,25 @@ public class SearchComponent {
     }
 
     public void filterBy(String filterName) {
-        page.waitForResponse("**/products?**by_category=**", () -> {
-            page.getByLabel(filterName).click();
-        });
+
+        page.waitForResponse(
+                response ->
+                        response.url().endsWith("/products")
+                                && "QUERY".equalsIgnoreCase(
+                                response.request().method()
+                        )
+                                && response.status() == 200,
+                () -> page.getByLabel(filterName).check()
+        );
     }
 
     public void sortBy(String sortFilter) {
-        page.waitForResponse("**/products?page=0&sort=**", () -> {
+        page.waitForResponse(response ->
+                response.url().endsWith("/products")
+                        && "QUERY".equalsIgnoreCase(
+                        response.request().method()
+                )
+                        && response.status() == 200, () -> {
             page.getByTestId("sort").selectOption(sortFilter);
         });
     }
