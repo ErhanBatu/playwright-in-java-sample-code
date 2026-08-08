@@ -2,6 +2,7 @@ package com.serenitydojo.playwright.toolshop.catalog.pageobjects;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import net.serenitybdd.annotations.Step;
 
 public class SearchComponent {
     private final Page page;
@@ -10,6 +11,7 @@ public class SearchComponent {
         this.page = page;
     }
 
+    @Step("Search for {0}")
     public void searchBy(String keyword) {
         page.waitForResponse(response ->
                 response.url().endsWith("/products/search")
@@ -23,12 +25,14 @@ public class SearchComponent {
         });
     }
 
+    @Step("Clear search")
     public void clearSearch() {
         page.waitForResponse("**/products**", () -> {
             page.getByTestId("search-reset").click();
         });
     }
 
+    @Step("Filter by {0}")
     public void filterBy(String filterName) {
 
         page.waitForResponse(
@@ -42,6 +46,7 @@ public class SearchComponent {
         );
     }
 
+    @Step("Sort by {0}")
     public void sortBy(String sortFilter) {
         page.waitForResponse(response ->
                 response.url().endsWith("/products")

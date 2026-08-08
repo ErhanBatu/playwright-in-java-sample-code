@@ -3,6 +3,7 @@ package com.serenitydojo.playwright.toolshop.contact;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import net.serenitybdd.annotations.Step;
 
 import java.nio.file.Path;
 
@@ -49,6 +50,7 @@ public class ContactForm {
         page.setInputFiles("#attachment", fileToUpload);
     }
 
+    @Step("Submitting the contact form")
     public void submitForm() {
         sendButton.click();
     }

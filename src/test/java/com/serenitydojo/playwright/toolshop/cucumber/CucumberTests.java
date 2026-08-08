@@ -10,9 +10,12 @@ import org.junit.platform.suite.api.Suite;
 @SelectPackages("features")
 @ConfigurationParameter(
         key = "cucumber.plugin",
-        value = "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm," +
+        value =
+//                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm," +
+                "net.serenitybdd.cucumber.core.plugin.SerenityReporterParallel," +
                 "pretty," +
                 "html:target/cucumber-reports/cucumber.html"
 )
+@ConfigurationParameter(key = "cucumber.glue", value = "com.serenitydojo.playwright.toolshop")
 public class CucumberTests {
 }
