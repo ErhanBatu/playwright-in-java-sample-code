@@ -2,25 +2,31 @@ package com.serenitydojo.playwright.toolshop.catalog;
 
 import com.serenitydojo.playwright.toolshop.catalog.pageobjects.*;
 import com.serenitydojo.playwright.toolshop.fixtures.PlaywrightTestCase;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+
+import net.serenitybdd.annotations.Feature;
+import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.annotations.Story;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import net.serenitybdd.playwright.PlaywrightSerenity;
+import net.serenitybdd.playwright.junit5.SerenityPlaywrightExtension;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.List;
 
 @DisplayName("Shopping Cart")
 @Feature("Shopping Cart")
-
+@ExtendWith(SerenityJUnit5Extension.class)
+@ExtendWith(SerenityPlaywrightExtension.class)
 public class AddToCartTest extends PlaywrightTestCase {
-
-    SearchComponent searchComponent;
-    ProductList productList;
-    ProductDetails productDetails;
-    NavBar navBar;
-    CheckoutCart checkoutCart;
+    @Steps SearchComponent searchComponent;
+    @Steps ProductList productList;
+    @Steps ProductDetails productDetails;
+    @Steps NavBar navBar;
+    @Steps CheckoutCart checkoutCart;
 
     @BeforeEach
     void openHomePage() {
@@ -29,11 +35,15 @@ public class AddToCartTest extends PlaywrightTestCase {
 
     @BeforeEach
     void setUp() {
-        searchComponent = new SearchComponent(page);
-        productList = new ProductList(page);
-        productDetails = new ProductDetails(page);
-        navBar = new NavBar(page);
-        checkoutCart = new CheckoutCart(page);
+
+        // we use @Steps from serenity so we don't have to use initiate them here, serenity does automatically
+//        searchComponent = new SearchComponent(page);
+//        productList = new ProductList(page);
+//        productDetails = new ProductDetails(page);
+//        navBar = new NavBar(page);
+//        checkoutCart = new CheckoutCart(page);
+
+        PlaywrightSerenity.registerPage(page);
     }
 
 

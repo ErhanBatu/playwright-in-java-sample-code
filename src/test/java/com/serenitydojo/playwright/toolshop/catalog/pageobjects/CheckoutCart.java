@@ -1,7 +1,6 @@
 package com.serenitydojo.playwright.toolshop.catalog.pageobjects;
 
 import com.microsoft.playwright.Page;
-import io.qameta.allure.Step;
 
 import java.util.List;
 

@@ -1,7 +1,8 @@
 package com.serenitydojo.playwright.toolshop.catalog.pageobjects;
 
 import com.microsoft.playwright.Page;
-import io.qameta.allure.Step;
+import net.serenitybdd.annotations.Step;
+
 
 public class NavBar {
     private final Page page;

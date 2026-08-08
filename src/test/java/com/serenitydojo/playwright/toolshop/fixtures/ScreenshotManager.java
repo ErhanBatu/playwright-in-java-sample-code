@@ -7,10 +7,10 @@ import java.io.ByteArrayInputStream;
 
 public class ScreenshotManager {
 
-    public static void takeScreenshot(Page page, String name){
-        var screenshot = page.screenshot(
-                new Page.ScreenshotOptions().setFullPage(true)
-        );
-        Allure.addAttachment(name, new ByteArrayInputStream(screenshot));
-    }
+//    public static void takeScreenshot(Page page, String name){
+//        var screenshot = page.screenshot(
+//                new Page.ScreenshotOptions().setFullPage(true)
+//        );
+//        Allure.addAttachment(name, new ByteArrayInputStream(screenshot));
+//    }
 }
